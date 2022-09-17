@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>   
+ <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
@@ -20,10 +20,10 @@
       <div class="weather-app-wrapper">
         <div class="weather-app">
         <div class="overview">
-          <h1>New York</h1>
+          <h1 id="city"></h1>
           <ul>
             <li>Friday 05:00</li>
-            <li>Clear</li>
+            <li id="description"></li>
           </ul>
           <div class="row">
             <div class="col-6">
@@ -34,15 +34,16 @@
                 id="icon"
               />
               <div class="float-left">
-              <strong class="tempnumber">12</strong> <span class="units">  °C |<a style="text-decoration:none" href="#"> °F </a></span>
+              <strong id="temperature" class="tempnumber"></strong> <span class="units">  °C |<a style="text-decoration:none" href="#"> °F </a></span>
               </div>
             </div>
             </div>
             <div class="col-6">
               <ul>
-                <li>Precipitation: 0%</li>
-                <li>Humidity: 75%</li>
-                <li>Wind: 2km/h</li>
+                <li>Humidity: <span id="humidity"></span>%
+
+                </li>
+                <li>Wind: <span id= "wind"></span></span> Km/H </li>
               </ul>
             </div>
           </div>
