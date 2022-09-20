@@ -23,52 +23,69 @@ function formateDate(timestamp){
     return `${day} ${hours}:${minutes}`;
 }
 
-
 function displayForcast() {
     let forcastElement = document.querySelector("#forcast");
 
     let forcastHTML=`<div class="row">`;
-    forcastHTML = forcastHTML +
+    let days = [
+        "Sun", 
+        "Mon", 
+        "Tues",
+        "Wed", 
+        "Thu", 
+        "Fri", 
+        "Sat" ];
 
+    days.forEach(function (day, index) {
+        forcastHTML = forcastHTML +
     
-     ` 
-              <div class="col-2">
-              <div class="weather-forecast-date">
-               Tue </div>
-               <img src="http://openweathermap.org/img/wn/10d@2x.png"
-                alt=""
-                width="60"
-                />
+        
+         ` 
+                  <div class="col-2">
+                  <div class="weather-forecast-date">
+                   ${day} </div>
+                   <img src="http://openweathermap.org/img/wn/10d@2x.png"
+                    alt=""
+                    width="60"
+                    />
+    
+                    <div class="weather-forcast-temperatures">
+                      <span class="weather-forcast-temperature-max">
+                        18°
+                      </span>
+                     <span class="weather-forcast-temperature-min">
+                        12°
+                     </span>
+                    </div>
+                    </div> 
+                    `; 
+                    ` 
+                  <div class="col-2">
+                  <div class="weather-forecast-date">
+                   Tue </div>
+                   <img src="http://openweathermap.org/img/wn/10d@2x.png"
+                    alt=""
+                    width="60"
+                    />
+    
+                    <div class="weather-forcast-temperatures">
+                      <span class="weather-forcast-temperature-max">
+                        18°
+                      </span>
+                     <span class="weather-forcast-temperature-min">
+                        12°
+                     </span>
+                    </div>
+                    </div> 
+                    `; 
 
-                <div class="weather-forcast-temperatures">
-                  <span class="weather-forcast-temperature-max">
-                    18°
-                  </span>
-                 <span class="weather-forcast-temperature-min">
-                    12°
-                 </span>
-                </div>
-                </div> 
-                `; 
-                ` 
-              <div class="col-2">
-              <div class="weather-forecast-date">
-               Tue </div>
-               <img src="http://openweathermap.org/img/wn/10d@2x.png"
-                alt=""
-                width="60"
-                />
 
-                <div class="weather-forcast-temperatures">
-                  <span class="weather-forcast-temperature-max">
-                    18°
-                  </span>
-                 <span class="weather-forcast-temperature-min">
-                    12°
-                 </span>
-                </div>
-                </div> 
-                `; 
+
+                  
+
+
+    })
+
     forcastHTML = forcastHTML + `</div>`;
     forcastElement.innerHTML=forcastHTML;
 
