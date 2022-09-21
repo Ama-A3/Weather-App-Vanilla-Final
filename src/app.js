@@ -23,10 +23,12 @@ function formateDate(timestamp){
     return `${day} ${hours}:${minutes}`;
 }
 
-function displayForcast() {
-    let forcastElement = document.querySelector("#forcast");
 
-    let forcastHTML=`<div class="row">`;
+function displayForecast(response) {
+    let forecastElement = document.querySelector("#forecast");
+
+
+    let forecastHTML=`<div class="row">`;
     let days = [
         "Sun", 
         "Mon", 
@@ -36,24 +38,24 @@ function displayForcast() {
         "Fri", 
         "Sat" ];
 
-    days.forEach(function (day, index) {
-        forcastHTML = forcastHTML +
+    days.forEach(function (day,index) {
+        forecastHTML = forecastHTML +
     
-        
-         ` 
+        ` 
                   <div class="col-2">
                   <div class="weather-forecast-date">
-                   ${day} </div>
-                   <img src="http://openweathermap.org/img/wn/10d@2x.png"
+                    </div>
+                   <img 
+                   src="http://openweathermap.org/img/wn/10d@2x.png"
                     alt=""
                     width="60"
                     />
     
-                    <div class="weather-forcast-temperatures">
-                      <span class="weather-forcast-temperature-max">
+                    <div class="weather-forecast-temperatures">
+                      <span class="weather-forecast-temperature-max">
                         18°
                       </span>
-                     <span class="weather-forcast-temperature-min">
+                     <span class="weather-forecast-temperature-min">
                         12°
                      </span>
                     </div>
@@ -68,34 +70,36 @@ function displayForcast() {
                     width="60"
                     />
     
-                    <div class="weather-forcast-temperatures">
-                      <span class="weather-forcast-temperature-max">
+                    <div class="weather-forecast-temperatures">
+                      <span class="weather-forecast-temperature-max">
                         18°
                       </span>
-                     <span class="weather-forcast-temperature-min">
+                     <span class="weather-forecast-temperature-min">
                         12°
                      </span>
                     </div>
                     </div> 
                     `; 
-
-
-
-                  
-
-
     })
 
-    forcastHTML = forcastHTML + `</div>`;
-    forcastElement.innerHTML=forcastHTML;
+    forecastHTML = forecastHTML + `</div>`;
+    forecastElement.innerHTML = forecastHTML;
 
 }
+
 
                 
             
     
 
+function getForecast(coordinates) {
+    let apiKey = "6b0bbd8113f83ef6f180221d2ea2bfa5";
+    let apiURL =`https://api.openweathermap.org/data/2.5/onecall?
+    lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+        console.log(apiURL);
+    axios.get(apiiUrl).then(displayForecast);
 
+}
 
 
 function displayTemperature(response){
@@ -122,6 +126,9 @@ iconElement.setAttribute(
 
 iconElement.setAttribute("alt", response.data.weather[0].description);
 
+getForecast(response.data.coord);
+
+
 }
 
 
@@ -138,7 +145,6 @@ function handelSubmit(event){
 event.preventDefault();
 let cityInputElement = document.querySelector("#city-input");
 search(cityInputElement.value);
-console.log(cityInputElement.value);
 
 
 }
@@ -186,4 +192,4 @@ celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 
 search("New York");
-displayForcast(); 
+
