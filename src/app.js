@@ -81,7 +81,7 @@ function displayForecast(response) {
 
 function getForecast(coordinates) {
     let apiKey = "6b0bbd8113f83ef6f180221d2ea2bfa5";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(displayForecast);
 }
 
@@ -119,7 +119,7 @@ getForecast(response.data.coord);
 
 function search(city){
 let apiKey = "6b0bbd8113f83ef6f180221d2ea2bfa5";
-let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
 axios.get(apiURL).then(displayTemperature);
 
@@ -158,7 +158,7 @@ function displayCelsiusTemperature(event){
 
 let city = "new york";
 let apiKey = "6b0bbd8113f83ef6f180221d2ea2bfa5";
-let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
 axios.get(apiURL).then(displayTemperature);
 
